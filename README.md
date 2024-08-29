@@ -16,7 +16,7 @@ This is a static web application, so there is no need for installation. Just clo
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/task-manager-app.git
+git clone https://github.com/Iyed-Lahiani/Task-Manager-App.git
 cd task-manager-app
 ```
 ### Open in Browser
