@@ -9,16 +9,18 @@ class Task {
         li.innerHTML= `${this._name} <button class="delete-btn">Delete</button>`;
         li.querySelector(".delete-btn").addEventListener('click',()=>{
             li.remove();
+            let savedTasks = JSON.parse(localStorage.getItem("tasks"));
+            savedTasks = savedTasks.filter(task => task.name !== this._name);
+            localStorage.setItem("tasks",JSON.stringify(savedTasks))
         })
         return li;
     }
     static saveTasks(){
         let displayedTasks;
         displayedTasks=[];
-        document.querySelectorAll("li").forEach(li=>{
+        document.querySelectorAll("li").forEach((li,index)=>{
             const taskName = li.firstChild.textContent;
-            const taskId = JSON.parse(localStorage.getItem("tasks")).find(task => task.name===taskName);
-            displayedTasks.push({name:taskName,id:taskId});
+            displayedTasks.push({name:taskName,id:index});
         });
         localStorage.setItem("tasks",JSON.stringify(displayedTasks));
     }
